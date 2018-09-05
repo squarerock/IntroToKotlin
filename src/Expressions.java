@@ -22,24 +22,38 @@ public class Expressions {
      * Simple if
      */
     Integer getMax(Integer a, Integer b){
-        if(a > b){
-            return a;
-        } else {
-            return b;
-        }
+        return a > b ? a : b;
     }
 
     /**
-     * Simple switch
+     * Simple if-else
      */
     String payOrSpend(Integer x){
-        switch (x){
-            case 15:
-            case 31:
-                return "Pay day";
-            default:
-                return "Spend day";
+        String output;
+        if (x != 15 && x != 31) {
+            weirdLabel: {
+                if (x >= 1) {
+                    if (x <= 14) {
+                        break weirdLabel;
+                    }
+                }
+
+                if (x >= 16) {
+                    if (x <= 30) {
+                        break weirdLabel;
+                    }
+                }
+
+                output = "Weird day";
+                return output;
+            }
+
+            output = "Spend day";
+        } else {
+            output = "Pay day";
         }
+
+        return output;
     }
 
     /**
