@@ -1,3 +1,5 @@
+import classes.Movie
+
 /**
  * Created by pranavkonduru on 9/2/18.
  */

@@ -3,13 +3,18 @@ package classes
 /**
  * Created by pranavkonduru on 9/4/18.
  */
-class Human(val name: String) : LifeForm, Babies {
+open class Human(name: String) : LifeForm, Mammals {
+
+    /**
+     * Non-null modifiable undeclared variable
+     */
+    lateinit var nameCapitalized: String
 
     /**
      * Initialization block for the primary constructor
      */
     init {
-        println("Name supplied is $name")
+        println("Hello $name!")
     }
 
     /**
@@ -17,6 +22,8 @@ class Human(val name: String) : LifeForm, Babies {
      */
     constructor(name: String, gender: String, age: Int?): this(name){
         age?.also { println("Age given is $it")}
+
+        nameCapitalized = name.capitalize() // Assigning a value to the lateinit variable
     }
 
     /**
@@ -37,11 +44,21 @@ class Human(val name: String) : LifeForm, Babies {
     }
 
     /**
-     * If two interfaces have methods with same signatures and names,
-     *
-     * return type should specify which interface it is calling.
+     * If two interfaces have same method with code block,
+     * return type needs to be explicit
      */
     override fun speak(): String {
-        return super<Babies>.speak()
+        return super<Mammals>.speak()
+    }
+
+    /**
+     * lateinit variable should only be accessed if it is
+     * initialized
+     */
+    fun getCapitalizedNamed() : String {
+        if(::nameCapitalized.isInitialized)
+            return nameCapitalized
+        else
+            throw Exception("Not initialized yet")
     }
 }

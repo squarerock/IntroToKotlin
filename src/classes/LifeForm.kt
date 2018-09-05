@@ -12,19 +12,15 @@ interface LifeForm {
 
     /**
      * Interfaces can have code block
-     *
-     * All life form speaks some Human language unless specified
      */
     fun speak() : String {
-        return "Human Language"
+        return "Random sounds"
     }
 
     /**
      * Interface with nullable return type
-     *
-     * Certain lifeforms have no limbs
      */
     fun limbs() : Int? {
-        return 4
+        return null
     }
 }
