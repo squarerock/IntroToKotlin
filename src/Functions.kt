@@ -1,5 +1,3 @@
-import classes.Movie
-
 /**
  * Created by pranavkonduru on 9/2/18.
  */
@@ -44,9 +42,6 @@ class Functions {
      */
     fun company(name: String = "Citrix"){
         println("I work at $name")
-
-        val movie = Movie("test", "dir1", 4.5f)
-
     }
 
 }
